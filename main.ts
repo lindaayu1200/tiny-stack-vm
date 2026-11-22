@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+// tiny stack ISA batch runner for the make.fun entry
+// processes each task against the local interpreter
+// outputs PASS/FAIL line per task
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -6,7 +9,6 @@ const inDir = process.env.MAKEFUN_INPUT_DIR  || '/input';
 const outDir = process.env.MAKEFUN_OUTPUT_DIR || '/output';
 
 function to32(x) { return x | 0; }
-function s32(x) { return x | 0; }
 function u32(x) { let v = x >>> 0; return v; }
 
 function vmRun(program, inputBytes) {
